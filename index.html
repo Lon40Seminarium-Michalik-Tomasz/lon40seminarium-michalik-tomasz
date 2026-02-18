@@ -1,97 +1,145 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Elementy elektroniczne</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        li {
-            margin-bottom: 25px;
-        }
-        img {
-            display: block;
-            margin-top: 10px;
-            max-width: 200px;
-        }
-        a {
-            font-weight: bold;
-            text-decoration: none;
-            color: black;
-        }
-        a:hover {
-            color: blue;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Elementy elektroniczne</title>
+
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; }
+li { margin-bottom: 25px; }
+img { display: block; margin-top: 10px; max-width: 200px; }
+a { font-weight: bold; text-decoration: none; color: black; }
+a:hover { color: blue; }
+
+.opis {
+    margin-top: 80px;
+    padding: 20px;
+    border-top: 2px solid #ccc;
+}
+
+.powrot {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 14px;
+    background: #eee;
+    border-radius: 5px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Lista elementów elektronicznych</h1>
+<h1 id="top">Lista elementów elektronicznych</h1>
 
 <ol>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Rezystor" target="_blank">Rezystor</a>
-        <img src="images/1.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Kondensator" target="_blank">Kondensator</a>
-        <img src="images/2.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Dioda_elektroluminescencyjna" target="_blank">Dioda LED</a>
-        <img src="images/3.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Wyświetlacz_siedmiosegmentowy" target="_blank">Wyświetlacz siedmiosegmentowy</a>
-        <img src="images/4.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Klawiatura" target="_blank">Klawiatura alfanumeryczna 4x4</a>
-        <img src="images/5.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Mikroprzełącznik" target="_blank">Mikroswitch</a>
-        <img src="images/6.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Fotorezystor" target="_blank">Fotorezystor</a>
-        <img src="images/7.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Przekaźnik" target="_blank">Przekaźnik</a>
-        <img src="images/8.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Silnik_krokowy" target="_blank">Silnik krokowy</a>
-        <img src="images/9.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Serwomechanizm" target="_blank">Servo SG-90</a>
-        <img src="images/10.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Potencjometr" target="_blank">Potencjometr</a>
-        <img src="images/11.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Enkoder" target="_blank">Enkoder inkrementalny</a>
-        <img src="images/12.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Czujnik_ultradźwiękowy" target="_blank">Czujnik ultradźwiękowy</a>
-        <img src="images/13.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Kontaktron" target="_blank">Czujnik magnetyczny – kontaktron</a>
-        <img src="images/14.png">
-    </li>
-    <li>
-        <a href="https://pl.wikipedia.org/wiki/Wyświetlacz_LCD" target="_blank">Wyświetlacz LCD</a>
-        <img src="images/15.png">
-    </li>
+<li><a href="#rez">Rezystor</a><img src="images/1.png"></li>
+<li><a href="#kon">Kondensator</a><img src="images/2.png"></li>
+<li><a href="#led">Dioda LED</a><img src="images/3.png"></li>
+<li><a href="#seg">Wyświetlacz siedmiosegmentowy</a><img src="images/4.png"></li>
+<li><a href="#klaw">Klawiatura 4x4</a><img src="images/5.png"></li>
+<li><a href="#mikro">Mikroswitch</a><img src="images/6.png"></li>
+<li><a href="#foto">Fotorezystor</a><img src="images/7.png"></li>
+<li><a href="#przek">Przekaźnik</a><img src="images/8.png"></li>
+<li><a href="#sil">Silnik krokowy</a><img src="images/9.png"></li>
+<li><a href="#servo">Servo SG-90</a><img src="images/10.png"></li>
+<li><a href="#pot">Potencjometr</a><img src="images/11.png"></li>
+<li><a href="#enk">Enkoder inkrementalny</a><img src="images/12.png"></li>
+<li><a href="#ultra">Czujnik ultradźwiękowy</a><img src="images/13.png"></li>
+<li><a href="#kont">Kontaktron</a><img src="images/14.png"></li>
+<li><a href="#lcd">Wyświetlacz LCD</a><img src="images/15.png"></li>
 </ol>
+
+<!-- OPISY -->
+
+<div class="opis" id="rez">
+<h2>Rezystor</h2>
+<p>Rezystor ogranicza przepływ prądu w obwodzie elektrycznym.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="kon">
+<h2>Kondensator</h2>
+<p>Kondensator magazynuje energię elektryczną w polu elektrycznym.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="led">
+<h2>Dioda LED</h2>
+<p>Dioda LED emituje światło podczas przepływu prądu.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="seg">
+<h2>Wyświetlacz siedmiosegmentowy</h2>
+<p>Służy do wyświetlania cyfr za pomocą siedmiu segmentów LED.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="klaw">
+<h2>Klawiatura 4x4</h2>
+<p>Pozwala na wprowadzanie danych poprzez zestaw przycisków.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="mikro">
+<h2>Mikroswitch</h2>
+<p>Mikroswitch to mały przełącznik aktywowany naciśnięciem.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="foto">
+<h2>Fotorezystor</h2>
+<p>Fotorezystor zmienia opór w zależności od natężenia światła.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="przek">
+<h2>Przekaźnik</h2>
+<p>Przekaźnik umożliwia sterowanie obwodem za pomocą sygnału elektrycznego.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="sil">
+<h2>Silnik krokowy</h2>
+<p>Silnik krokowy obraca się o dokładnie określone kąty.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="servo">
+<h2>Servo SG-90</h2>
+<p>Serwomechanizm umożliwia precyzyjne ustawianie kąta obrotu.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="pot">
+<h2>Potencjometr</h2>
+<p>Potencjometr pozwala regulować napięcie poprzez zmianę oporu.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="enk">
+<h2>Enkoder inkrementalny</h2>
+<p>Enkoder zamienia ruch obrotowy na impulsy elektryczne.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="ultra">
+<h2>Czujnik ultradźwiękowy</h2>
+<p>Służy do pomiaru odległości za pomocą fal dźwiękowych.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="kont">
+<h2>Kontaktron</h2>
+<p>Kontaktron reaguje na pole magnetyczne i działa jak przełącznik.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
+
+<div class="opis" id="lcd">
+<h2>Wyświetlacz LCD</h2>
+<p>Wyświetlacz LCD pokazuje informacje w postaci znaków i symboli.</p>
+<a href="#top" class="powrot">⬅ Powrót do listy</a>
+</div>
 
 </body>
 </html>
