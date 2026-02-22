@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Pola i obwody figur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Strona do obliczania pól i obwodów figur geometrycznych</h1>
+
+<div class="container">
+
+    <!-- Prostokąt -->
+    <div class="card">
+        <h2>Prostokąt</h2>
+        <input id="rectA" type="number" placeholder="Bok a">
+        <input id="rectB" type="number" placeholder="Bok b">
+        <button onclick="calcRectangle()">Oblicz</button>
+        <p id="rectResult"></p>
+    </div>
+
+    <!-- Trójkąt -->
+    <div class="card">
+        <h2>Trójkąt</h2>
+        <input id="triA" type="number" placeholder="Podstawa a">
+        <input id="triH" type="number" placeholder="Wysokość h">
+        <button onclick="calcTriangle()">Oblicz</button>
+        <p id="triResult"></p>
+    </div>
+
+    <!-- Trapez -->
+    <div class="card">
+        <h2>Trapez</h2>
+        <input id="trapA" type="number" placeholder="Podstawa a">
+        <input id="trapB" type="number" placeholder="Podstawa b">
+        <input id="trapH" type="number" placeholder="Wysokość h">
+        <button onclick="calcTrapezoid()">Oblicz</button>
+        <p id="trapResult"></p>
+    </div>
+
+    <!-- Okrąg -->
+    <div class="card">
+        <h2>Okrąg</h2>
+        <input id="circleR" type="number" placeholder="Promień r">
+        <button onclick="calcCircle()">Oblicz</button>
+        <p id="circleResult"></p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
