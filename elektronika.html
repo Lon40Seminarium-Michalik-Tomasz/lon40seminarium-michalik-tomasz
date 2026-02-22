@@ -9,15 +9,41 @@ body {
     font-family: Arial, sans-serif;
     background: #1e1f23;
     color: #e4e4e4;
-    margin: 40px;
+    margin: 0;
 }
-/* nagłówek */
+
+/* ===== GÓRNY PASEK ===== */
+.topbar {
+    background: #2b2d31;
+    padding: 15px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+.homeBtn {
+    padding: 10px 18px;
+    background: #5865f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.homeBtn:hover {
+    background: #4752c4;
+}
+
+/* ===== TREŚĆ ===== */
+.content {
+    padding: 40px;
+}
+
 h1 {
     color: white;
     margin-bottom: 30px;
 }
 
-/* lista elementów */
+/* lista */
 li {
     margin-bottom: 30px;
     list-style: none;
@@ -32,7 +58,6 @@ li:hover {
     transform: translateY(-3px);
 }
 
-/* obrazki */
 img {
     display: block;
     margin-top: 12px;
@@ -40,7 +65,6 @@ img {
     border-radius: 8px;
 }
 
-/* linki */
 a {
     font-weight: bold;
     text-decoration: none;
@@ -62,11 +86,6 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.7);
 }
 
-.opis h2 {
-    color: white;
-}
-
-/* przycisk powrotu */
 .powrot {
     margin-top: 25px;
     display: inline-block;
@@ -82,49 +101,31 @@ a:hover {
 .powrot:hover {
     background: #4752c4;
 }
-    .topbar {
-    margin-bottom: 20px;
-}
-
-.homeBtn {
-    display: inline-block;
-    padding: 10px 18px;
-    background: #5865f2;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.homeBtn:hover {
-    background: #4752c4;
-}
 </style>
 
 <script>
 function pokaz(id) {
     document.getElementById("lista").style.display = "none";
-
-    let opisy = document.querySelectorAll(".opis");
-    opisy.forEach(o => o.style.display = "none");
-
+    document.querySelectorAll(".opis").forEach(o => o.style.display = "none");
     document.getElementById(id).style.display = "block";
 }
 
 function powrot() {
     document.getElementById("lista").style.display = "block";
-
-    let opisy = document.querySelectorAll(".opis");
-    opisy.forEach(o => o.style.display = "none");
+    document.querySelectorAll(".opis").forEach(o => o.style.display = "none");
 }
 </script>
 
 </head>
 <body>
+
+<!-- GÓRNY PASEK -->
 <div class="topbar">
     <a href="index.html" class="homeBtn">⬅ Strona główna</a>
 </div>
+
+<div class="content">
+
 <h1>Lista elementów elektronicznych</h1>
 
 <div id="lista">
@@ -239,8 +240,16 @@ function powrot() {
 <div class="powrot" onclick="powrot()">⬅ Powrót</div>
 </div>
 
+<div id="rez" class="opis">
+<h2>Rezystor</h2>
+<p>Rezystor ogranicza przepływ prądu.</p>
+<div class="powrot" onclick="powrot()">⬅ Powrót</div>
+</div>
+
+</div>
 </body>
 </html>
+
 
 
 
