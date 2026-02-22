@@ -5,29 +5,83 @@
 <title>Elementy elektroniczne</title>
 
 <style>
-body { font-family: Arial; margin: 40px; }
-
-li { margin-bottom: 25px; }
-img { display: block; margin-top: 10px; max-width: 200px; }
-
-a { font-weight: bold; text-decoration: none; color: black; }
-a:hover { color: blue; }
-
-#lista { display: block; }
-
-.opis {
-    display: none;
-    border-top: 2px solid #ccc;
-    padding-top: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background: #1e1f23;
+    color: #e4e4e4;
+    margin: 40px;
 }
 
-.powrot {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 8px 14px;
-    background: #eee;
-    border-radius: 5px;
+/* nagłówek */
+h1 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* lista elementów */
+li {
+    margin-bottom: 30px;
+    list-style: none;
+    background: #2b2d31;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: translateY(-3px);
+}
+
+/* obrazki */
+img {
+    display: block;
+    margin-top: 12px;
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+/* linki */
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #8ea1ff;
+    font-size: 18px;
     cursor: pointer;
+}
+
+a:hover {
+    color: #c2cbff;
+}
+
+/* opisy */
+.opis {
+    display: none;
+    background: #2b2d31;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+
+.opis h2 {
+    color: white;
+}
+
+/* przycisk powrotu */
+.powrot {
+    margin-top: 25px;
+    display: inline-block;
+    padding: 10px 18px;
+    background: #5865f2;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.powrot:hover {
+    background: #4752c4;
 }
 </style>
 
@@ -168,3 +222,4 @@ function powrot() {
 
 </body>
 </html>
+
