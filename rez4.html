@@ -1,0 +1,118 @@
+<!-- ====== PLIK 1: 4-paskowy kalkulator ====== -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator rezystora 4-paskowego</title>
+<style>
+body { font-family: Arial; background:#dcdcdc; padding:20px; text-align:center; }
+h1 { font-size:40px; font-style:italic; }
+select { margin:5px; padding:5px; }
+#result { margin-top:20px; font-size:28px; }
+
+.resistor {
+  margin:40px auto;
+  width:500px;
+  height:100px;
+  background:#d6d3b5;
+  border-radius:50px;
+  position:relative;
+}
+
+.wire {
+  position:absolute;
+  width:150px;
+  height:6px;
+  background:#000;
+  top:50%;
+}
+.left { left:-150px; }
+.right { right:-150px; }
+
+.band {
+  position:absolute;
+  width:20px;
+  height:100%;
+}
+
+.placeholder { margin-top:30px; height:150px; border:2px dashed #777; }
+</style>
+</head>
+<body>
+
+<h1>Kalkulator kodów rezystorów (4 paski)</h1>
+
+<div class="resistor">
+  <div class="wire left"></div>
+  <div class="wire right"></div>
+  <div id="band1" class="band" style="left:80px"></div>
+  <div id="band2" class="band" style="left:120px"></div>
+  <div id="band3" class="band" style="left:160px"></div>
+  <div id="band4" class="band" style="right:60px"></div>
+</div>
+
+<div>
+Pasek 1: <select id="b1"></select>
+Pasek 2: <select id="b2"></select>
+Mnożnik: <select id="mult"></select>
+Tolerancja: <select id="tol"></select>
+</div>
+
+<div id="result"></div>
+
+<div class="placeholder">rezy4.jpg</div>
+
+<script>
+const colorMap = {
+czarny:"black", brązowy:"brown", czerwony:"red", pomarańczowy:"orange",
+żółty:"yellow", zielony:"green", niebieski:"blue", fioletowy:"violet",
+szary:"gray", biały:"white", złoty:"gold", srebrny:"silver"
+};
+
+const colors = Object.keys(colorMap).slice(0,10).map((c,i)=>[c,i]);
+const mults = [
+["czarny",1],["brązowy",10],["czerwony",100],["pomarańczowy",1000],["żółty",10000],
+["zielony",100000],["niebieski",1000000],["złoty",0.1],["srebrny",0.01]
+];
+const tolerances = [
+["brązowy","±1%"],["czerwony","±2%"],["zielony","±0.5%"],["niebieski","±0.25%"],
+["fioletowy","±0.1%"],["szary","±0.05%"],["złoty","±5%"],["srebrny","±10%"]
+];
+
+function fill(id, arr) {
+let sel = document.getElementById(id);
+arr.forEach(v => {
+let o = document.createElement("option");
+o.text = v[0];
+o.value = v[1];
+sel.add(o);
+});
+}
+
+fill("b1", colors);
+fill("b2", colors);
+fill("mult", mults);
+
+let tolSel = document.getElementById("tol");
+tolerances.forEach(v => {
+let o = document.createElement("option");
+o.text = v[0] + " ("+v[1]+")";
+o.value = v[1];
+tolSel.add(o);
+});
+
+function update(){
+let v = (b1.value*10 + Number(b2.value)) * mult.value;
+result.innerText = "Wartość rezystancji: " + v + " Ω " + tol.value;
+
+band1.style.background=colorMap[b1.options[b1.selectedIndex].text];
+band2.style.background=colorMap[b2.options[b2.selectedIndex].text];
+band3.style.background=colorMap[mult.options[mult.selectedIndex].text];
+band4.style.background=colorMap[tol.options[tol.selectedIndex].text.split(" ")[0]];
+}
+
+[b1,b2,mult,tol].forEach(el=>el.addEventListener("change",update));
+update();
+</script>
+</body>
+</html>
