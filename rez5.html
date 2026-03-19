@@ -108,9 +108,10 @@ tolSel.add(o);
 });
 
 function update(){
-  let baseValue = (b1.value*10 + Number(b2.value)) * mult.value;
+  // 3 cyfry znaczące!
+  let baseValue = (b1.value*100 + b2.value*10 + Number(b3.value)) * mult.value;
 
-  // pobranie tolerancji jako liczby (np. "±5%" → 5)
+  // tolerancja
   let tolText = tol.value;
   let tolPercent = parseFloat(tolText.replace("±","").replace("%",""));
 
@@ -121,10 +122,12 @@ function update(){
     "Wartość rezystancji: " + baseValue + " Ω " + tolText +
     "\nZakres: " + min.toFixed(2) + " Ω – " + max.toFixed(2) + " Ω";
 
-  band1.style.background=colorMap[b1.options[b1.selectedIndex].text];
-  band2.style.background=colorMap[b2.options[b2.selectedIndex].text];
-  band3.style.background=colorMap[mult.options[mult.selectedIndex].text];
-  band4.style.background=colorMap[tol.options[tol.selectedIndex].text.split(" ")[0]];
+  // kolory pasków
+  band1.style.background = colorMap[b1.options[b1.selectedIndex].text];
+  band2.style.background = colorMap[b2.options[b2.selectedIndex].text];
+  band3.style.background = colorMap[b3.options[b3.selectedIndex].text];
+  band4.style.background = colorMap[mult.options[mult.selectedIndex].text];
+  band5.style.background = colorMap[tol.options[tol.selectedIndex].text.split(" ")[0]];
 }
 
 [b1,b2,b3,mult,tol].forEach(el=>el.addEventListener("change",update));
