@@ -113,7 +113,7 @@
     const username = "Lon40Seminarium-Michalik-Tomasz";
     const repo = "lon40seminarium-michalik-tomasz";
     const branch = "main";
-    const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/images/`;
+    const baseUrl = `https://github.com/Lon40Seminarium-Michalik-Tomasz/lon40seminarium-michalik-tomasz`;
 
     // Ładowanie tła skali z folderu images
     document.getElementById('gauge-bg').src = baseUrl + "bmi_skala.png";
@@ -137,14 +137,14 @@
             const b = parseFloat(bmi);
 
             // Kąty dla Twoich 8 sekcji
-            if (b < 16) { angle = 11.25; fileName = "1.png"; text = "Wygłodzenie"; color = "#0051ff"; }
-            else if (b < 17) { angle = 33.75; fileName = "2.png"; text = "Wychudzenie"; color = "#00a2ff"; }
-            else if (b < 18.5) { angle = 56.25; fileName = "3.png"; text = "Niedowaga"; color = "#f2d000"; }
-            else if (b < 25) { angle = 78.75; fileName = "4.png"; text = "Wartość prawidłowa"; color = "#00c400"; }
-            else if (b < 30) { angle = 101.25; fileName = "5.png"; text = "Nadwaga"; color = "#ff8c00"; }
-            else if (b < 35) { angle = 123.75; fileName = "6.png"; text = "1° otyłości"; color = "#ff4000"; }
-            else if (b < 40) { angle = 146.25; fileName = "7.png"; text = "2° otyłości"; color = "#b30000"; }
-            else { angle = 168.75; fileName = "8.png"; text = "3° otyłości"; color = "#660000"; }
+            if (b < 16) { angle = 11.25; fileName = "1bmi.png"; text = "Wygłodzenie"; color = "#0051ff"; }
+            else if (b < 17) { angle = 33.75; fileName = "2bmi.png"; text = "Wychudzenie"; color = "#00a2ff"; }
+            else if (b < 18.5) { angle = 56.25; fileName = "3bmi.png"; text = "Niedowaga"; color = "#f2d000"; }
+            else if (b < 25) { angle = 78.75; fileName = "4bmi.png"; text = "Wartość prawidłowa"; color = "#00c400"; }
+            else if (b < 30) { angle = 101.25; fileName = "5bmi.png"; text = "Nadwaga"; color = "#ff8c00"; }
+            else if (b < 35) { angle = 123.75; fileName = "6bmi.png"; text = "1° otyłości"; color = "#ff4000"; }
+            else if (b < 40) { angle = 146.25; fileName = "7bmi.png"; text = "2° otyłości"; color = "#b30000"; }
+            else { angle = 168.75; fileName = "8bmi.png"; text = "3° otyłości"; color = "#660000"; }
 
             needle.style.transform = `translateX(-50%) rotate(${angle - 90}deg)`;
             img.src = baseUrl + fileName;
