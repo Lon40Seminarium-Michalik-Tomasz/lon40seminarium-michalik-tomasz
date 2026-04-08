@@ -5,43 +5,26 @@
     <title>Kalkulator BMI</title>
     <style>
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            background: #f4f7f9; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; background: #f4f7f9; 
         }
 
         .card { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 30px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
-            width: 850px; 
-            box-sizing: border-box;
+            background: white; padding: 40px; border-radius: 30px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 850px; 
         }
 
         .main-title {
-            text-align: center;
-            color: #2c3e50;
-            font-size: 32px;
-            font-weight: 900;
-            margin-top: 0;
-            margin-bottom: 40px;
+            text-align: center; color: #2c3e50; font-size: 32px;
+            font-weight: 900; margin-bottom: 40px; text-transform: uppercase;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
-        .layout { 
-            display: flex; 
-            gap: 50px; 
-            align-items: flex-start; 
-        }
-
+        .layout { display: flex; gap: 50px; align-items: flex-start; }
         .left-side { flex: 1.2; text-align: center; }
 
+        /* TARCZA */
         .gauge-wrapper {
             position: relative;
             width: 400px;
@@ -49,14 +32,12 @@
             margin: 0 auto 60px;
         }
 
-        .gauge-img { 
-            width: 100%; 
-            display: block; 
-        }
+        .gauge-img { width: 100%; display: block; }
 
+        /* WSKAZÓWKA */
         .needle {
             position: absolute;
-            bottom: -20px;
+            bottom: -20px; 
             left: 50%;
             width: 6px;
             height: 160px;
@@ -68,20 +49,17 @@
             border-radius: 5px 5px 0 0;
         }
 
+        /* OŚ OBROTU */
         .needle-pivot {
             position: absolute;
-            width: 46px;
-            height: 46px;
-            background: #2c3e50;
-            border-radius: 50%;
-            border: 4px solid white;
-            left: 50%;
-            bottom: -43px;
-            transform: translateX(-50%);
-            z-index: 11;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 46px; height: 46px;
+            background: #2c3e50; border-radius: 50%;
+            border: 4px solid white; left: 50%;
+            bottom: -43px; transform: translateX(-50%);
+            z-index: 11; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
+        /* FORMULARZ */
         .form-group { text-align: left; margin-bottom: 15px; }
         label { display: block; font-weight: 700; color: #555; margin-bottom: 5px; }
         input { 
@@ -92,19 +70,12 @@
             width: 100%; padding: 15px; background: #333; color: white; 
             border: none; border-radius: 12px; font-size: 18px; 
             font-weight: bold; cursor: pointer; margin-top: 10px;
-            transition: 0.3s;
         }
-        button:hover { background: #555; }
 
         #result-val { font-size: 34px; font-weight: 900; margin-top: 25px; color: #2c3e50; }
 
-        .right-side { 
-            flex: 0.8; 
-            text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        /* POSTAĆ */
+        .right-side { flex: 0.8; text-align: center; min-height: 350px; }
         #char-img { width: 100%; max-width: 220px; height: auto; display: none; }
         #char-status { font-size: 24px; font-weight: 800; margin-top: 20px; }
     </style>
@@ -117,18 +88,18 @@
     <div class="layout">
         <div class="left-side">
             <div class="gauge-wrapper">
-                <img src="images/skala_bmi.png" class="gauge-img">
+                <img id="gauge-bg" src="" class="gauge-img">
                 <div class="needle" id="needle"></div>
                 <div class="needle-pivot"></div>
             </div>
 
             <div class="form-group">
                 <label>Wzrost [cm]</label>
-                <input type="number" id="height">
+                <input type="number" id="height" placeholder="np. 180">
             </div>
             <div class="form-group">
                 <label>Waga [kg]</label>
-                <input type="number" id="weight">
+                <input type="number" id="weight" placeholder="np. 80">
             </div>
             
             <button onclick="calculateBMI()">OBLICZ</button>
@@ -143,46 +114,50 @@
 </div>
 
 <script>
+    // --- KONFIGURACJA GITHUB ---
+    const username = "TWÓJ_USER"; // <--- Wpisz tutaj swoją nazwę
+    const repo = "TWOJE_REPO";    // <--- Wpisz nazwę repozytorium
+    const branch = "main";
+    
+    // Zmieniona ścieżka uwzględniająca folder /images/
+    const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/images/`;
+
+    // Ustawienie tła tarczy (zakładając, że bmi_skala.jpg też jest w /images/)
+    document.getElementById('gauge-bg').src = baseUrl + "bmi_skala.jpg";
+
     function calculateBMI() {
         const h = document.getElementById('height').value / 100;
         const w = document.getElementById('weight').value;
         const needle = document.getElementById('needle');
         const img = document.getElementById('char-img');
         const status = document.getElementById('char-status');
-        const result = document.getElementById('result-val');
 
         if (h > 0 && w > 0) {
             const bmi = (w / (h * h)).toFixed(1);
-            result.innerText = "BMI = " + bmi;
+            document.getElementById('result-val').innerText = "BMI = " + bmi;
 
             let angle = 0;
-            let file = "";
+            let fileName = "";
             let text = "";
             let color = "";
 
             const b = parseFloat(bmi);
 
-            if (b < 16) { 
-                angle = 11.25; file = "1bmi.png"; text = "Wygłodzenie"; color = "#0051ff";
-            } else if (b < 17) { 
-                angle = 33.75; file = "2bmi.png"; text = "Wychudzenie"; color = "#00a2ff";
-            } else if (b < 18.5) { 
-                angle = 56.25; file = "3bmi.png"; text = "Niedowaga"; color = "#f2d000";
-            } else if (b < 25) { 
-                angle = 78.75; file = "4bmi.png"; text = "Wartość prawidłowa"; color = "#00c400";
-            } else if (b < 30) { 
-                angle = 101.25; file = "5bmi.png"; text = "Nadwaga"; color = "#ff8c00";
-            } else if (b < 35) { 
-                angle = 123.75; file = "6bmi.png"; text = "1° otyłości"; color = "#ff4000";
-            } else if (b < 40) { 
-                angle = 146.25; file = "7bmi.png"; text = "2° otyłości"; color = "#b30000";
-            } else { 
-                angle = 168.75; file = "8bmi.png"; text = "3° otyłości"; color = "#660000";
-            }
+            // Twoje precyzyjne kąty środkowe dla 8 sekcji
+            if (b < 16) { angle = 11.25; fileName = "1.png"; text = "Wygłodzenie"; color = "#0051ff"; }
+            else if (b < 17) { angle = 33.75; fileName = "2.png"; text = "Wychudzenie"; color = "#00a2ff"; }
+            else if (b < 18.5) { angle = 56.25; fileName = "3.png"; text = "Niedowaga"; color = "#f2d000"; }
+            else if (b < 25) { angle = 78.75; fileName = "4.png"; text = "Wartość prawidłowa"; color = "#00c400"; }
+            else if (b < 30) { angle = 101.25; fileName = "5.png"; text = "Nadwaga"; color = "#ff8c00"; }
+            else if (b < 35) { angle = 123.75; fileName = "6.png"; text = "1° otyłości"; color = "#ff4000"; }
+            else if (b < 40) { angle = 146.25; fileName = "7.png"; text = "2° otyłości"; color = "#b30000"; }
+            else { angle = 168.75; fileName = "8.png"; text = "3° otyłości"; color = "#660000"; }
 
+            // Obrót wskazówki
             needle.style.transform = `translateX(-50%) rotate(${angle - 90}deg)`;
 
-            img.src = file;
+            // Wyświetlanie postaci z GitHub Raw
+            img.src = baseUrl + fileName;
             img.style.display = "block";
             status.innerText = text;
             status.style.color = color;
