@@ -5,7 +5,7 @@
     <title>Kalkulator BMI</title>
     <style>
         body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            font-family: 'Segoe UI', sans-serif; 
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh; margin: 0; background: #f4f7f9; 
         }
@@ -24,7 +24,6 @@
         .layout { display: flex; gap: 50px; align-items: flex-start; }
         .left-side { flex: 1.2; text-align: center; }
 
-        /* TARCZA */
         .gauge-wrapper {
             position: relative;
             width: 400px;
@@ -34,7 +33,6 @@
 
         .gauge-img { width: 100%; display: block; }
 
-        /* WSKAZÓWKA */
         .needle {
             position: absolute;
             bottom: -20px; 
@@ -49,7 +47,6 @@
             border-radius: 5px 5px 0 0;
         }
 
-        /* OŚ OBROTU */
         .needle-pivot {
             position: absolute;
             width: 46px; height: 46px;
@@ -59,7 +56,6 @@
             z-index: 11; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* FORMULARZ */
         .form-group { text-align: left; margin-bottom: 15px; }
         label { display: block; font-weight: 700; color: #555; margin-bottom: 5px; }
         input { 
@@ -74,7 +70,6 @@
 
         #result-val { font-size: 34px; font-weight: 900; margin-top: 25px; color: #2c3e50; }
 
-        /* POSTAĆ */
         .right-side { flex: 0.8; text-align: center; min-height: 350px; }
         #char-img { width: 100%; max-width: 220px; height: auto; display: none; }
         #char-status { font-size: 24px; font-weight: 800; margin-top: 20px; }
@@ -83,7 +78,7 @@
 <body>
 
 <div class="card">
-    <h1 class="main-title">Kalkulator BMI</h1>
+    <h1 class="main-title">Wskaźnik Masy Ciała BMI</h1>
 
     <div class="layout">
         <div class="left-side">
@@ -95,11 +90,11 @@
 
             <div class="form-group">
                 <label>Wzrost [cm]</label>
-                <input type="number" id="height">
+                <input type="number" id="height" placeholder="np. 180">
             </div>
             <div class="form-group">
                 <label>Waga [kg]</label>
-                <input type="number" id="weight">
+                <input type="number" id="weight" placeholder="np. 80">
             </div>
             
             <button onclick="calculateBMI()">OBLICZ</button>
@@ -114,16 +109,14 @@
 </div>
 
 <script>
-    // --- KONFIGURACJA GITHUB ---
-    const username = "TWÓJ_USER"; // <--- Wpisz tutaj swoją nazwę
-    const repo = "TWOJE_REPO";    // <--- Wpisz nazwę repozytorium
+    // Uzupełnione dane z Twojego repozytorium:
+    const username = "Lon40Seminarium-Michalik-Tomasz";
+    const repo = "lon40seminarium-michalik-tomasz";
     const branch = "main";
-    
-    // Zmieniona ścieżka uwzględniająca folder /images/
     const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/images/`;
 
-    // Ustawienie tła tarczy (zakładając, że bmi_skala.jpg też jest w /images/)
-    document.getElementById('gauge-bg').src = baseUrl + "bmi_skala.jpg";
+    // Ładowanie tła skali z folderu images
+    document.getElementById('gauge-bg').src = baseUrl + "bmi_skala.png";
 
     function calculateBMI() {
         const h = document.getElementById('height').value / 100;
@@ -143,7 +136,7 @@
 
             const b = parseFloat(bmi);
 
-            // Twoje precyzyjne kąty środkowe dla 8 sekcji
+            // Kąty dla Twoich 8 sekcji
             if (b < 16) { angle = 11.25; fileName = "1.png"; text = "Wygłodzenie"; color = "#0051ff"; }
             else if (b < 17) { angle = 33.75; fileName = "2.png"; text = "Wychudzenie"; color = "#00a2ff"; }
             else if (b < 18.5) { angle = 56.25; fileName = "3.png"; text = "Niedowaga"; color = "#f2d000"; }
@@ -153,10 +146,7 @@
             else if (b < 40) { angle = 146.25; fileName = "7.png"; text = "2° otyłości"; color = "#b30000"; }
             else { angle = 168.75; fileName = "8.png"; text = "3° otyłości"; color = "#660000"; }
 
-            // Obrót wskazówki
             needle.style.transform = `translateX(-50%) rotate(${angle - 90}deg)`;
-
-            // Wyświetlanie postaci z GitHub Raw
             img.src = baseUrl + fileName;
             img.style.display = "block";
             status.innerText = text;
