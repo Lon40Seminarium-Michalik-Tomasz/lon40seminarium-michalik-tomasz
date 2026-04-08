@@ -112,7 +112,8 @@
     const username = "Lon40Seminarium-Michalik-Tomasz";
     const repo = "lon40seminarium-michalik-tomasz";
     const branch = "main";
-    const baseUrl = `https://github.com/Lon40Seminarium-Michalik-Tomasz/lon40seminarium-michalik-tomasz`;
+    
+    const baseUrl = `https://raw.githubusercontent.com/${username}/${repo}/${branch}/images/`;
 
     document.getElementById('gauge-bg').src = baseUrl + "bmi_skala.png";
 
@@ -144,6 +145,7 @@
             else { angle = 168.75; fileName = "8bmi.png"; text = "3° otyłości"; color = "#660000"; }
 
             needle.style.transform = `translateX(-50%) rotate(${angle - 90}deg)`;
+
             img.src = baseUrl + fileName;
             img.style.display = "block";
             status.innerText = text;
